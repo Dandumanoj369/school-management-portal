@@ -25,15 +25,10 @@ jobs:
         uses: actions/checkout@v6
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Prepare the website
-        shell: bash
-        run: |
-          mkdir -p _site
-          base64 --decode index.html.gz.b64 | gzip -dc > _site/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          path: .
       - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
